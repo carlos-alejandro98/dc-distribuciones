@@ -1,0 +1,339 @@
+---
+import { WHATSAPP_NUMBER } from '../config/global.js';
+
+const slides = [
+  {
+    badge: "CALIDAD Y CONFIANZA A TU PUERTA",
+    title: "DC Distribuciones",
+    description: "Tu aliado estratégico en distribución de productos frescos y de calidad para negocios exitosos.",
+    cta: "Ver Productos",
+    ctaLink: "#productos"
+  },
+  {
+    badge: "HUEVOS FRESCOS DE PRIMERA",
+    title: "Calidad Garantizada",
+    description: "Huevos seleccionados de primera calidad, frescos y con entrega directa a tu negocio.",
+    cta: "Conocer más",
+    ctaLink: "#nosotros"
+  },
+  {
+    badge: "MAYORISTAS Y MINORISTAS",
+    title: "Precios Competitivos",
+    description: "Los mejores precios del mercado para tu negocio. Bandejas y cajas disponibles.",
+    cta: "Contactar",
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=Hola, me interesa conocer sus precios`
+  }
+];
+---
+
+<section id="inicio" class="hero">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      {slides.map((slide, index) => (
+        <div class="swiper-slide">
+          <div class="hero-slide">
+            <div class="hero-bg">
+              <!-- Added animated floating orbs for visual interest -->
+              <div class="hero-orb hero-orb-1"></div>
+              <div class="hero-orb hero-orb-2"></div>
+              <div class="hero-orb hero-orb-3"></div>
+            </div>
+            <div class="container hero-container">
+              <span class="hero-badge">{slide.badge}</span>
+              <h1 class="hero-title">{slide.title}</h1>
+              <p class="hero-description">{slide.description}</p>
+              <a 
+                href={slide.ctaLink} 
+                class="btn btn-accent hero-btn"
+                target={slide.ctaLink.startsWith('http') ? '_blank' : undefined}
+                rel={slide.ctaLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {slide.cta}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 4.5rem;
+  }
+
+  .hero-swiper {
+    height: calc(100vh - 4.5rem);
+  }
+
+  .swiper-slide {
+    height: 100%;
+  }
+
+  .hero-slide {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, #1E40AF 100%);
+    z-index: -1;
+  }
+
+  /* Floating orbs for visual depth */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(96, 165, 250, 0.5);
+    top: -100px;
+    right: -100px;
+    animation: float-orb 8s ease-in-out infinite;
+  }
+
+  .hero-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(245, 158, 11, 0.3);
+    bottom: -50px;
+    left: -50px;
+    animation: float-orb 10s ease-in-out infinite reverse;
+  }
+
+  .hero-orb-3 {
+    width: 200px;
+    height: 200px;
+    background: rgba(147, 197, 253, 0.4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-orb 6s ease-in-out infinite;
+  }
+
+  @keyframes float-orb {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 20px) scale(1.1); }
+  }
+
+  @keyframes pulse-orb {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+  }
+
+  .hero-container {
+    text-align: center;
+    color: var(--color-white);
+    padding: 2rem 1rem;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-description {
+    font-size: 1.1875rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+    line-height: 1.7;
+  }
+
+  .hero-btn {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-white);
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+    z-index: 10;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+
+  /* Enhanced Swiper styles with better animations */
+  .hero-swiper :global(.swiper-pagination) {
+    bottom: 4rem;
+  }
+
+  .hero-swiper :global(.swiper-pagination-bullet) {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-swiper :global(.swiper-pagination-bullet-active) {
+    width: 2.5rem;
+    border-radius: 0.375rem;
+    background-color: var(--color-accent);
+  }
+
+  .hero-swiper :global(.swiper-button-prev),
+  .hero-swiper :global(.swiper-button-next) {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--color-white);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-swiper :global(.swiper-button-prev:hover),
+  .hero-swiper :global(.swiper-button-next:hover) {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .hero-swiper :global(.swiper-button-prev::after),
+  .hero-swiper :global(.swiper-button-next::after) {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* Slide content animations */
+  .hero-swiper :global(.swiper-slide-active) .hero-badge {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .hero-swiper :global(.swiper-slide-active) .hero-title {
+    animation: fadeInUp 0.6s ease-out 0.1s forwards;
+  }
+
+  .hero-swiper :global(.swiper-slide-active) .hero-description {
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+  }
+
+  .hero-swiper :global(.swiper-slide-active) .hero-btn {
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-swiper :global(.swiper-button-prev),
+    .hero-swiper :global(.swiper-button-next) {
+      display: none;
+    }
+
+    .hero-badge {
+      font-size: 0.6875rem;
+      padding: 0.375rem 1rem;
+    }
+
+    .hero-orb-1, .hero-orb-2, .hero-orb-3 {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Swiper !== 'undefined') {
+      new Swiper('.hero-swiper', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        speed: 1000,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    }
+  });
+</script>

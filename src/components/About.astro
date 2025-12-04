@@ -1,0 +1,87 @@
+---
+
+---
+
+<section id="nosotros" class="about section">
+    <div class="container">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <div class="section-divider"></div>
+        <p class="about-description">
+            DC Distribuciones es una empresa comprometida con llevar productos
+            de primera calidad a negocios, emprendedores y mayoristas. Nos
+            especializamos en la distribución eficiente de huevos frescos y
+            planeamos expandir nuestro catálogo para servir mejor a nuestros
+            clientes.
+        </p>
+
+        <div class="about-stats">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Clientes Satisfechos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Productos Frescos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about {
+        background-color: var(--color-white);
+        text-align: center;
+    }
+
+    .about-description {
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        font-size: 1.125rem;
+        color: var(--color-gray-600);
+        line-height: 1.8;
+    }
+
+    .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .stat-number {
+        font-family: var(--font-display);
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: var(--color-gray-500);
+        font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+        .about-stats {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+        }
+    }
+</style>
