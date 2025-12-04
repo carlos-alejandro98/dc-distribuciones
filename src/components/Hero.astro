@@ -70,12 +70,6 @@ const slides = [
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   </div>
-
-  <div class="hero-scroll-indicator">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 5v14M19 12l-7 7-7-7"/>
-    </svg>
-  </div>
 </section>
 
 <style>
@@ -252,18 +246,6 @@ const slides = [
   .hero-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(245, 158, 11, 0.45);
-  }
-
-  .hero-scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--color-white);
-    opacity: 0.8;
-    animation: bounceSmooth 2.5s ease-in-out infinite;
-    z-index: 10;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   }
 
   /* Smoother bounce animation */
@@ -445,10 +427,6 @@ const slides = [
 
     .hero-panel-glow {
       display: none;
-    }
-
-    .hero-scroll-indicator {
-      bottom: 4rem;
     }
 
     .hero-container {
