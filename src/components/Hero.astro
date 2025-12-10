@@ -8,15 +8,15 @@ const slides = [
     description: "Tu aliado estratégico en distribución de productos frescos y de calidad para negocios exitosos.",
     cta: "Ver Productos",
     ctaLink: "#productos",
-    image: "/images/hero-chicken-farm.jpg"
+    bgGradient: "linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #f59e0b 100%)"
   },
   {
     badge: "HUEVOS FRESCOS DE PRIMERA",
     title: "Calidad Garantizada",
     description: "Huevos seleccionados de primera calidad, frescos y con entrega directa a tu negocio.",
     cta: "Conocer más",
-    ctaLink: "#nosotros",
-    image: "/images/hero-fresh-eggs.jpg"
+    ctaLink: "/huevos",
+    bgGradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #3b82f6 100%)"
   },
   {
     badge: "MAYORISTAS Y MINORISTAS",
@@ -24,7 +24,7 @@ const slides = [
     description: "Los mejores precios del mercado para tu negocio. Bandejas y cajas disponibles.",
     cta: "Contactar",
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=Hola, me interesa conocer sus precios`,
-    image: "/images/hero-egg-boxes.jpg"
+    bgGradient: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #fbbf24 100%)"
   }
 ];
 ---
@@ -35,14 +35,13 @@ const slides = [
       {slides.map((slide, index) => (
         <div class="swiper-slide">
           <div class="hero-slide">
-            <!-- Background image with smooth overlay -->
-            <div class="hero-bg">
-              <img src={slide.image || "/placeholder.svg"} alt={slide.title} class="hero-bg-image" />
+            <!-- Background with gradient colors from logo instead of images -->
+            <div class="hero-bg" style={`background: ${slide.bgGradient}`}>
+              <div class="hero-bg-pattern"></div>
               <div class="hero-bg-overlay"></div>
             </div>
             
             <div class="container hero-container">
-              <!-- Moved frosted glass panel to the left with improved blur -->
               <div class="hero-content-panel">
                 <div class="hero-panel-glow"></div>
                 <span class="hero-badge">{slide.badge}</span>
@@ -75,13 +74,11 @@ const slides = [
 <style>
   .hero {
     position: relative;
-    /* Reduced height from 100vh to 70vh for smaller carousel */
     min-height: 70vh;
     padding-top: 4.5rem;
   }
 
   .hero-swiper {
-    /* Adjusted height for smaller carousel */
     height: calc(70vh - 4.5rem);
   }
 
@@ -94,29 +91,42 @@ const slides = [
     height: 100%;
     display: flex;
     align-items: center;
-    /* Changed from flex-end to flex-start for left alignment */
     justify-content: flex-start;
     overflow: hidden;
   }
 
-  /* Enhanced background image with smoother transitions */
+  /* Enhanced background with gradient colors matching logo */
   .hero-bg {
     position: absolute;
     inset: 0;
     z-index: -1;
-  }
-
-  .hero-bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    /* Smoother, longer transition for fluid animation */
     transition: transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .swiper-slide-active .hero-bg-image {
-    /* Gentler zoom animation for smoother effect */
+  /* Added animated pattern overlay for visual interest */
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+    animation: patternMove 20s ease-in-out infinite;
+  }
+
+  @keyframes patternMove {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -20px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 30px) scale(0.95);
+    }
+  }
+
+  .swiper-slide-active .hero-bg {
     animation: zoomInSmooth 12s ease-out forwards;
   }
 
@@ -129,7 +139,6 @@ const slides = [
     }
   }
 
-  /* More natural gradient overlay from right to left */
   .hero-bg-overlay {
     position: absolute;
     inset: 0;
@@ -147,17 +156,14 @@ const slides = [
     width: 100%;
     padding: 2rem;
     display: flex;
-    /* Aligned to left instead of right */
     justify-content: flex-start;
     align-items: center;
   }
 
-  /* Improved frosted glass panel with more natural blur */
   .hero-content-panel {
     position: relative;
     max-width: 600px;
     padding: 3rem 2.5rem;
-    /* Enhanced blur effect for more natural diffusion */
     background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
@@ -168,11 +174,9 @@ const slides = [
       0 8px 32px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
     overflow: hidden;
-    /* Smooth fade-in transition */
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Softer animated glow effect */
   .hero-panel-glow {
     position: absolute;
     top: -50%;
@@ -239,7 +243,6 @@ const slides = [
     position: relative;
     z-index: 1;
     box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
-    /* Smoother button transition */
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
@@ -248,17 +251,6 @@ const slides = [
     box-shadow: 0 12px 32px rgba(245, 158, 11, 0.45);
   }
 
-  /* Smoother bounce animation */
-  @keyframes bounceSmooth {
-    0%, 100% {
-      transform: translateX(-50%) translateY(0);
-    }
-    50% {
-      transform: translateX(-50%) translateY(-8px);
-    }
-  }
-
-  /* Enhanced Swiper styles with smoother transitions */
   .hero-swiper :global(.swiper-pagination) {
     bottom: 2.5rem;
     z-index: 15;
@@ -269,7 +261,6 @@ const slides = [
     height: 0.625rem;
     background-color: rgba(255, 255, 255, 0.5);
     opacity: 1;
-    /* Smoother pagination transition */
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     backdrop-filter: blur(4px);
   }
@@ -289,7 +280,6 @@ const slides = [
     border-radius: 50%;
     color: var(--color-white);
     backdrop-filter: blur(16px);
-    /* Smoother button transitions */
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 15;
@@ -308,7 +298,6 @@ const slides = [
     font-weight: 700;
   }
 
-  /* Smoother staggered animations sliding from left */
   .hero-swiper :global(.swiper-slide-active) .hero-badge {
     animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
@@ -329,7 +318,6 @@ const slides = [
     animation: panelFadeInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  /* Animation from left instead of right */
   @keyframes slideInLeft {
     from {
       opacity: 0;
@@ -375,7 +363,6 @@ const slides = [
   }
 
   @media (max-width: 768px) {
-    /* Adjusted mobile height */
     .hero {
       min-height: 60vh;
     }

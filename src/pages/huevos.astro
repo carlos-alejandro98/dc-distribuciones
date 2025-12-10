@@ -1,0 +1,1013 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Products from "../components/Huevos/HuevosProducts.astro";
+import Footer from "@/components/Footer.astro";
+
+const eggsData = [
+    {
+        size: "Tercera",
+        name: "Huevo Tercera",
+        weight: "< 53g",
+        protein: "4.8g",
+        color: "#fcd34d",
+        gradient: "linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%)",
+    },
+    {
+        size: "Segunda",
+        name: "Huevo Segunda",
+        weight: "53-63g",
+        protein: "6.4g",
+        color: "#fbbf24",
+        gradient: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
+    },
+    {
+        size: "Primera",
+        name: "Huevo Primera",
+        weight: "63-73g",
+        protein: "7.1g",
+        color: "#f59e0b",
+        gradient: "linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)",
+    },
+    {
+        size: "Super",
+        name: "Huevo Super",
+        weight: "≥ 73g",
+        protein: "7.9g",
+        color: "#ea580c",
+        gradient: "linear-gradient(135deg, #ea580c 0%, #dc2626 100%)",
+    },
+];
+---
+
+<Layout title="Huevos - DC Distribuciones">
+    <Header />
+    <main class="eggs-page">
+        <!-- Hero Section with Professional Chicken/Eggs Background -->
+        <section class="hero-eggs">
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title animate-fade-in">
+                    Huevos de <span class="gradient-text">Primera Calidad</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in-delay">
+                    Frescura garantizada, nutrición superior y calidad incomparable en cada tamaño
+                </p>
+                <div class="hero-stats animate-slide-up">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Frescos</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">Alta</span>
+                        <span class="stat-label">Proteína</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Categorías</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <Products />
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="section-title">
+                    Comparativa de <span>Categorías</span>
+                </h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Descubre las características nutricionales de cada categoría
+                </p>
+
+                <div class="eggs-grid">
+                    {
+                        eggsData.map((egg, index) => (
+                            <article
+                                class="egg-card"
+                                style={`--delay: ${index * 0.1}s`}
+                            >
+                                <div class="egg-card-header">
+                                    <div
+                                        class="egg-size-badge"
+                                        style={`background: ${egg.gradient}`}
+                                    >
+                                        {egg.size}
+                                    </div>
+                                </div>
+                                <h3 class="egg-name">{egg.name}</h3>
+
+                                <!-- CSS Animated Egg Image -->
+                                <div class="egg-image-container">
+                                    <div class="css-egg" style={`--egg-color: ${egg.color}`}>
+                                        <div class="egg-highlight"></div>
+                                        <div class="egg-shadow"></div>
+                                    </div>
+                                    <div
+                                        class="egg-glow"
+                                        style={`background: radial-gradient(circle, ${egg.color}60 0%, transparent 70%)`}
+                                    />
+                                </div>
+
+                                <div class="egg-stats">
+                                    <div class="stat-row">
+                                        <svg
+                                            class="stat-icon"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M12 2a9 9 0 0 0-9 9v8a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5v-2a7 7 0 0 1 14 0v2h-2a2 2 0 0 0-2-2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-8a9 9 0 0 0-9-9z" />
+                                        </svg>
+                                        <span class="stat-label-text">Peso:</span>
+                                        <span class="stat-value">{egg.weight}</span>
+                                    </div>
+
+                                    <div class="stat-row">
+                                        <svg
+                                            class="stat-icon"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                        </svg>
+                                        <span class="stat-label-text">
+                                            Proteína:
+                                        </span>
+                                        <span class="stat-value">
+                                            {egg.protein}
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
+
+                <!-- Nutritional Benefits Section -->
+                <div class="benefits-section">
+                    <h3 class="benefits-title">
+                        Beneficios Nutricionales de los Huevos
+                    </h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <ellipse cx="12" cy="12" rx="8" ry="10"></ellipse>
+                                </svg>
+                            </div>
+                            <h4>Proteína Completa</h4>
+                            <p>
+                                Los huevos contienen todos los aminoácidos
+                                esenciales necesarios para el cuerpo humano
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                            <h4>Alto Valor Biológico</h4>
+                            <p>
+                                La proteína del huevo tiene una biodisponibilidad
+                                del 93%, la más alta entre los alimentos
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <h4>Energía Natural</h4>
+                            <p>
+                                Ricos en vitaminas B12, D y minerales como
+                                hierro y zinc
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                            </div>
+                            <h4>Colina para el Cerebro</h4>
+                            <p>
+                                Excelente fuente de colina, esencial para la
+                                salud cerebral y memoria
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Form Section - Integrated directly on the page -->
+        <section class="order-section">
+            <div class="container">
+                <div class="order-content">
+                    <div class="order-info">
+                        <h2 class="order-title">Haz tu pedido ahora</h2>
+                        <p class="order-description">
+                            Completa el formulario y nos pondremos en contacto contigo
+                            por WhatsApp para confirmar tu pedido de huevos frescos
+                        </p>
+                        <div class="order-features">
+                            <div class="feature-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Entrega rápida</span>
+                            </div>
+                            <div class="feature-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Frescura garantizada</span>
+                            </div>
+                            <div class="feature-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Mejor precio del mercado</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="order-form" id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required 
+                                placeholder="Tu nombre"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                required 
+                                placeholder="+56 9 1234 5678"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Categoría de huevo</label>
+                            <select id="category" name="category" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="Tercera">Tercera (&lt; 53g)</option>
+                                <option value="Segunda">Segunda (53-63g)</option>
+                                <option value="Primera">Primera (63-73g)</option>
+                                <option value="Super">Super (≥ 73g)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Cantidad (cajas)</label>
+                            <input 
+                                type="number" 
+                                id="quantity" 
+                                name="quantity" 
+                                min="1" 
+                                required 
+                                placeholder="Número de cajas"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje adicional (opcional)</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="3" 
+                                placeholder="Cualquier información adicional sobre tu pedido"
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Enviar pedido por WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .eggs-page {
+        margin-top: 4.5rem;
+    }
+
+    /* Hero Section with Professional Background */
+    .hero-eggs {
+        position: relative;
+        min-height: 550px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #1e3a8a;
+    }
+
+    /* Updated hero background to use generated chicken farm image */
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        background: 
+            linear-gradient(135deg, rgba(30, 58, 138, 0.65) 0%, rgba(59, 130, 246, 0.55) 50%, rgba(245, 158, 11, 0.60) 100%),
+            url('/images/banner-huevos.png') center/cover no-repeat;
+        background-blend-mode: overlay;
+    }
+
+    .hero-background::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.03) 10px,
+            rgba(255, 255, 255, 0.03) 20px
+        );
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at 30% 50%,
+            rgba(251, 191, 36, 0.15) 0%,
+            transparent 60%
+        );
+        animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% {
+            opacity: 0.6;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 6rem 1.5rem;
+    }
+
+    .hero-title {
+        font-family: var(--font-display);
+        font-size: 3.75rem;
+        font-weight: 900;
+        color: var(--color-white);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.4));
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        line-height: 1.6;
+    }
+
+    .hero-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 1.25rem;
+        padding: 2.25rem 3.5rem;
+        max-width: 650px;
+        margin: 0 auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .stat-number {
+        font-size: 2.25rem;
+        font-weight: 900;
+        color: var(--color-white);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+    }
+
+    .stat-divider {
+        width: 2px;
+        height: 50px;
+        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+
+    /* Animations */
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    .animate-fade-in-delay {
+        animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Comparison Section */
+    .comparison-section {
+        padding: 6rem 0;
+        background: linear-gradient(
+            180deg,
+            var(--color-gray-50) 0%,
+            var(--color-white) 100%
+        );
+    }
+
+    .eggs-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .egg-card {
+        background: var(--color-white);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: cardFadeIn 0.6s ease-out var(--delay) backwards;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .egg-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #fcd34d, #fbbf24, #f59e0b, #ea580c);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .egg-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
+    }
+
+    .egg-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    @keyframes cardFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .egg-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .egg-size-badge {
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        font-size: 1.125rem;
+        font-weight: 800;
+        color: var(--color-white);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .egg-name {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--color-gray-900);
+        text-align: center;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+
+    /* CSS Animated Egg */
+    .egg-image-container {
+        position: relative;
+        height: 200px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .css-egg {
+        width: 140px;
+        height: 180px;
+        background: var(--egg-color);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        position: relative;
+        box-shadow: 
+            inset -10px -10px 20px rgba(0, 0, 0, 0.1),
+            inset 10px 10px 20px rgba(255, 255, 255, 0.3),
+            0 10px 30px rgba(0, 0, 0, 0.15);
+        animation: eggFloat 3s ease-in-out infinite, eggRotate 6s linear infinite;
+        transform-origin: center;
+        transition: transform 0.4s ease;
+    }
+
+    .egg-card:hover .css-egg {
+        animation-play-state: paused;
+        transform: scale(1.15) rotate(8deg);
+    }
+
+    .egg-highlight {
+        position: absolute;
+        top: 30%;
+        left: 25%;
+        width: 35px;
+        height: 45px;
+        background: radial-gradient(ellipse, rgba(255, 255, 255, 0.7) 0%, transparent 60%);
+        border-radius: 50%;
+        filter: blur(3px);
+        animation: highlightPulse 2s ease-in-out infinite;
+    }
+
+    .egg-shadow {
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 20px;
+        background: radial-gradient(ellipse, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(8px);
+        animation: shadowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes eggFloat {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    @keyframes eggRotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes highlightPulse {
+        0%, 100% {
+            opacity: 0.7;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes shadowPulse {
+        0%, 100% {
+            transform: translateX(-50%) scale(1);
+            opacity: 0.3;
+        }
+        50% {
+            transform: translateX(-50%) scale(0.85);
+            opacity: 0.15;
+        }
+    }
+
+    .egg-glow {
+        position: absolute;
+        width: 180%;
+        height: 180%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    .egg-card:hover .egg-glow {
+        opacity: 1;
+    }
+
+    .egg-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem;
+        background: var(--color-gray-50);
+        border-radius: 0.75rem;
+    }
+
+    .stat-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .stat-icon {
+        color: var(--color-primary);
+        flex-shrink: 0;
+    }
+
+    .stat-label-text {
+        font-size: 0.875rem;
+        color: var(--color-gray-600);
+        font-weight: 500;
+    }
+
+    .stat-value {
+        margin-left: auto;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--color-gray-900);
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+        margin-top: 3rem;
+        padding: 3rem;
+        background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-white) 100%);
+        border-radius: 2rem;
+    }
+
+    .benefits-title {
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: center;
+        color: var(--color-gray-900);
+        margin-bottom: 3rem;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .benefit-card {
+        text-align: center;
+        padding: 2rem 1.5rem;
+        background: var(--color-white);
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .benefit-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--color-primary-50), var(--color-accent-light));
+        border-radius: 50%;
+        color: var(--color-primary);
+    }
+
+    .benefit-card h4 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--color-gray-900);
+        margin-bottom: 0.75rem;
+    }
+
+    .benefit-card p {
+        font-size: 0.9375rem;
+        color: var(--color-gray-600);
+        line-height: 1.6;
+    }
+
+    /* Order Form Section */
+    .order-section {
+        padding: 6rem 0;
+        background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-primary-dark) 50%,
+            var(--color-accent-dark) 100%
+        );
+        position: relative;
+        overflow: hidden;
+    }
+
+    .order-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 255, 255, 0.03) 20px,
+            rgba(255, 255, 255, 0.03) 40px
+        );
+    }
+
+    .order-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .order-info {
+        color: var(--color-white);
+    }
+
+    .order-title {
+        font-size: 2.75rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .order-description {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2.5rem;
+    }
+
+    .order-features {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.0625rem;
+        font-weight: 500;
+    }
+
+    .feature-item svg {
+        flex-shrink: 0;
+        color: #fbbf24;
+    }
+
+    .order-form {
+        background: var(--color-white);
+        padding: 3rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--color-gray-900);
+        margin-bottom: 0.5rem;
+        font-size: 0.9375rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.875rem 1.125rem;
+        border: 2px solid var(--color-gray-200);
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        font-family: var(--font-sans);
+        transition: all 0.2s ease;
+        background: var(--color-white);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 1.125rem 2rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        color: var(--color-white);
+        font-weight: 700;
+        font-size: 1.0625rem;
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-submit:active {
+        transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .eggs-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .order-content {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-stats {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .stat-divider {
+            width: 60px;
+            height: 2px;
+        }
+
+        .eggs-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .order-form {
+            padding: 2rem;
+        }
+
+        .order-title {
+            font-size: 2rem;
+        }
+    }
+
+</style>
+
+<script>
+    import { WHATSAPP_NUMBER } from "../config/global.js";
+
+    const form = document.getElementById('orderForm');
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form as HTMLFormElement);
+        const name = formData.get('name');
+        const phone = formData.get('phone');
+        const category = formData.get('category');
+        const quantity = formData.get('quantity');
+        const message = formData.get('message');
+        
+        const whatsappMessage = `*Nuevo Pedido de Huevos*%0A%0A` +
+            `*Nombre:* ${name}%0A` +
+            `*Teléfono:* ${phone}%0A` +
+            `*Categoría:* ${category}%0A` +
+            `*Cantidad:* ${quantity} cajas%0A` +
+            (message ? `*Mensaje:* ${message}` : '');
+        
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`, '_blank');
+    });
+</script>

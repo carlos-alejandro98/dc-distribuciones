@@ -29,29 +29,21 @@ const currentYear = new Date().getFullYear();
             <div class="footer-links">
                 <h4 class="footer-heading">Enlaces</h4>
                 <ul class="footer-nav">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="/#inicio">Inicio</a></li>
+                    <li><a href="/#productos">Productos</a></li>
+                    <li><a href="/#nosotros">Nosotros</a></li>
+                    <li><a href="/#contacto">Contacto</a></li>
                 </ul>
             </div>
 
             <div class="footer-social">
                 <h4 class="footer-heading">Síguenos</h4>
                 <div class="social-links">
-                    <!-- <a href="#" class="social-link" aria-label="Facebook">
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                            ></path>
-                        </svg>
-                    </a> -->
-                    <a href="https://www.instagram.com/dc.distribuidora.oficial?igsh=MWc3NDYwdmgyOHcwYg%3D%3D&utm_source=qr" class="social-link" aria-label="Instagram">
+                    <a
+                        href="https://www.instagram.com/dc.distribuidora.oficial?igsh=MWc3NDYwdmgyOHcwYg%3D%3D&utm_source=qr"
+                        class="social-link"
+                        aria-label="Instagram"
+                    >
                         <svg
                             width="20"
                             height="20"
@@ -137,6 +129,13 @@ const currentYear = new Date().getFullYear();
         align-items: center;
         justify-content: center;
         color: var(--color-white);
+    }
+
+    .footer-logo .logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.625rem;
     }
 
     .footer-logo .logo-title {
